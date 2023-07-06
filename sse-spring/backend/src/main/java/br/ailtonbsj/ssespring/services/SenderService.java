@@ -10,15 +10,21 @@ import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 public class SenderService {
 
     SseEmitter emitter;
+    SenderThread senderThread;
 
     public SenderService() {
-        this.emitter = new SseEmitter();
+        emitter = new SseEmitter();
         ExecutorService sseMvcExecutor = Executors.newSingleThreadExecutor();
-        sseMvcExecutor.execute(new SenderThread(this.emitter));
+        senderThread = new SenderThread(emitter);
+        sseMvcExecutor.execute(senderThread);
     }
 
     public SseEmitter streamSseMvc() {
-        return this.emitter;
+        return emitter;
+    }
+
+    public void doWork() {
+        senderThread.doWork();
     }
 
 }

@@ -13,6 +13,14 @@ public class SenderThread implements Runnable {
         this.emitter = emitter;
     }
 
+    private synchronized void waitWork() throws InterruptedException {
+        wait();
+    }
+
+    public synchronized void doWork() {
+        notify();
+    }
+
     @Override
     public void run() {
         try {
@@ -23,7 +31,7 @@ public class SenderThread implements Runnable {
                         .name("ping");
                     emitter.send(event);
                     System.out.println(i);
-                    Thread.sleep();
+                    waitWork();
                 }
             } catch (Exception e) {
                 emitter.completeWithError(e);
