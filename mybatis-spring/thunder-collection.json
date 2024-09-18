@@ -1,0 +1,154 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "MyBatis with Spring",
+    "collectionId": "4ab0aab5-25e3-47e2-b91c-237448f7860d",
+    "dateExported": "2024-09-18T12:02:08.697Z",
+    "version": "1.2",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "2f3dff01-208c-42fc-804a-31088418caf4",
+            "colId": "4ab0aab5-25e3-47e2-b91c-237448f7860d",
+            "containerId": "",
+            "name": "/users",
+            "url": "http://localhost:8080/users",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2024-09-18T11:59:59.202Z",
+            "modified": "2024-09-18T11:59:59.202Z",
+            "headers": []
+        },
+        {
+            "_id": "af0deae9-4f55-496d-aa90-85c42d77ed48",
+            "colId": "4ab0aab5-25e3-47e2-b91c-237448f7860d",
+            "containerId": "",
+            "name": "/users/id",
+            "url": "http://localhost:8080/users/1011",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2024-09-18T12:00:15.554Z",
+            "modified": "2024-09-18T12:00:15.554Z",
+            "headers": []
+        },
+        {
+            "_id": "7fabe8d5-b11d-4841-a7a5-896909cd875e",
+            "colId": "4ab0aab5-25e3-47e2-b91c-237448f7860d",
+            "containerId": "",
+            "name": "users",
+            "url": "http://localhost:8080/users",
+            "method": "PUT",
+            "sortNum": 30000,
+            "created": "2024-09-18T12:00:24.955Z",
+            "modified": "2024-09-18T12:00:24.955Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"id\": \"1011\",\n  \"name\": \"Alice on wonderland\",\n  \"salary\": \"9999.99\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "2a6ca305-246b-4a0f-b79d-e026a01845da",
+            "colId": "4ab0aab5-25e3-47e2-b91c-237448f7860d",
+            "containerId": "",
+            "name": "/users/id",
+            "url": "http://localhost:8080/users/1012",
+            "method": "DELETE",
+            "sortNum": 40000,
+            "created": "2024-09-18T12:00:30.876Z",
+            "modified": "2024-09-18T12:00:30.876Z",
+            "headers": []
+        },
+        {
+            "_id": "7c48739c-da1a-4465-b958-bddc77b00a51",
+            "colId": "4ab0aab5-25e3-47e2-b91c-237448f7860d",
+            "containerId": "",
+            "name": "/users/bulk",
+            "url": "http://localhost:8080/users/bulk",
+            "method": "POST",
+            "sortNum": 50000,
+            "created": "2024-09-18T12:00:42.852Z",
+            "modified": "2024-09-18T12:00:42.852Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "[\n  {\n    \"name\": \"Mario\",\n    \"salary\": 0.50\n  },\n  {\n    \"name\": \"Luigi\",\n    \"salary\": 1.50\n  }\n]",
+                "form": []
+            }
+        },
+        {
+            "_id": "7f61f023-497e-4b2e-abf4-4f8b75f6837c",
+            "colId": "4ab0aab5-25e3-47e2-b91c-237448f7860d",
+            "containerId": "",
+            "name": "/users",
+            "url": "http://localhost:8080/users",
+            "method": "POST",
+            "sortNum": 60000,
+            "created": "2024-09-18T12:00:48.684Z",
+            "modified": "2024-09-18T12:00:48.684Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"Alice Cooper\",\n  \"salary\": 5000.23\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "cc3ff10a-dfae-405d-8060-f2784e1db07b",
+            "colId": "4ab0aab5-25e3-47e2-b91c-237448f7860d",
+            "containerId": "",
+            "name": "/users /filter",
+            "url": "http://localhost:8080/users/filter?pageNumber=0&pageSize=20&sort=name desc,salary asc&name=alice&salary=4000.23",
+            "method": "GET",
+            "sortNum": 70000,
+            "created": "2024-09-18T12:00:57.348Z",
+            "modified": "2024-09-18T12:00:57.348Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "pageNumber",
+                    "value": "0",
+                    "isPath": false
+                },
+                {
+                    "name": "pageSize",
+                    "value": "20",
+                    "isPath": false
+                },
+                {
+                    "name": "sort",
+                    "value": "name desc,salary asc",
+                    "isPath": false
+                },
+                {
+                    "name": "name",
+                    "value": "alice",
+                    "isPath": false
+                },
+                {
+                    "name": "salary",
+                    "value": "4000.23",
+                    "isPath": false
+                }
+            ]
+        },
+        {
+            "_id": "31984e18-a953-40a7-8ff7-ae417a689d55",
+            "colId": "4ab0aab5-25e3-47e2-b91c-237448f7860d",
+            "containerId": "",
+            "name": "/users/id/bulk",
+            "url": "http://localhost:8080/users/bulk",
+            "method": "DELETE",
+            "sortNum": 80000,
+            "created": "2024-09-18T12:01:04.511Z",
+            "modified": "2024-09-18T12:01:04.511Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "[1011, 1014, 1016]",
+                "form": []
+            }
+        }
+    ],
+    "ref": "e3LHe8lUEabOxkEecAh9DO-F5ri1gJiOzNZPz67hsAU0w67UVFfzDIZLKvrcUupXqCzFOycXioGozhdGKH4iQQ"
+}
