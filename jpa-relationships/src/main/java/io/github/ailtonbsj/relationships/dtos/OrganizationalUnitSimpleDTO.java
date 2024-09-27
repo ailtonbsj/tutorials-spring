@@ -4,11 +4,11 @@ import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
 @Data
-public class OrganizationalUnitDTO {
+public class OrganizationalUnitSimpleDTO {
     Long id;
 
     @NotBlank
     String name;
 
-    OrganizationalUnitSimpleDTO parentUnit;
+    Long parentUnitId;
 }

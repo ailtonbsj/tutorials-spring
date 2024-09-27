@@ -1,5 +1,6 @@
 package io.github.ailtonbsj.relationships.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
@@ -13,6 +14,10 @@ import lombok.RequiredArgsConstructor;
 public class OrganizationalUnitService {
 
     private final OrganizationalUnitRepository repository;
+
+    public List<OrganizationalUnit> index(){
+        return repository.findAll();
+    }
 
     public OrganizationalUnit create(OrganizationalUnit ou){
         return repository.save(ou);
