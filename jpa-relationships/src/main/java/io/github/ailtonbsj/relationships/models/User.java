@@ -29,7 +29,6 @@ public class User {
 
     String username;
 
-    @JsonIgnore
     String password;
 
     Boolean isActive;
@@ -45,12 +44,12 @@ public class User {
     OrganizationalUnit department;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    Set<ActiveSession> sesssions = new HashSet<>();
+    Set<ActiveSession> sesssions;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(name = "permissions",
         joinColumns = @JoinColumn(name = "user_id"),
         inverseJoinColumns = @JoinColumn(name = "role_id")
     )
-    Set<Role> roles = new HashSet<>();
+    Set<Role> roles;
 }
