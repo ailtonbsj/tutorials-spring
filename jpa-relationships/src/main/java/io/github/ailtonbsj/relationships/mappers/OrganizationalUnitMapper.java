@@ -4,33 +4,28 @@ import java.util.List;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import io.github.ailtonbsj.relationships.dtos.OrganizationalUnitDTO;
-import io.github.ailtonbsj.relationships.dtos.OrganizationalUnitSimpleDTO;
 import io.github.ailtonbsj.relationships.models.OrganizationalUnit;
-import io.github.ailtonbsj.relationships.repositories.OrganizationalUnitRepository;
+
 
 @Mapper
-public abstract class OrganizationalUnitMapper {
-
-    @Autowired
-    private OrganizationalUnitRepository repository;
+public interface OrganizationalUnitMapper {
 
     @Mapping(target="users", ignore=true)
-    @Mapping(target="parentUnit", expression="java(findParent(dto.getParentUnitId()))")
-    public abstract OrganizationalUnit toModel(OrganizationalUnitSimpleDTO dto);
+    @Mapping(target="parentUnit", expression="java(setParentUnit(dto.getParentUnitId()))")
+    OrganizationalUnit toModel(OrganizationalUnitDTO dto);
 
-    protected OrganizationalUnit findParent(Long id) {
-        if(id == null) return null;
-        return repository.findById(id).get();
+    default OrganizationalUnit setParentUnit(Long parentUnitId) {
+        if(parentUnitId == null) return null;
+        var parent = new OrganizationalUnit();
+        parent.setId(parentUnitId);
+        return parent;
     }
 
     @Mapping(target="parentUnitId", source="parentUnit.id")
-    public abstract OrganizationalUnitSimpleDTO toSimpleDto(OrganizationalUnit ou);
+    OrganizationalUnitDTO toDto(OrganizationalUnit model);
 
-    public abstract  OrganizationalUnitDTO toDto(OrganizationalUnit ou);
-
-    public abstract List<OrganizationalUnitDTO> toDto(List<OrganizationalUnit> ous);
+    List<OrganizationalUnitDTO> toDto(List<OrganizationalUnit> model);
 
 }

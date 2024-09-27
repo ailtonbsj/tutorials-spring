@@ -10,5 +10,5 @@ public class OrganizationalUnitDTO {
     @NotBlank
     String name;
 
-    OrganizationalUnitSimpleDTO parentUnit;
+    Long parentUnitId;
 }
