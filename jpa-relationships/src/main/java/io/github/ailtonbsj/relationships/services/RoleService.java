@@ -22,6 +22,7 @@ public class RoleService {
     }
 
     public RoleDTO create(RoleDTO dto) {
+        dto.setId(null);
         var saved = repository.save(mapper.toModel(dto));
         return mapper.toDto(saved);
     }
