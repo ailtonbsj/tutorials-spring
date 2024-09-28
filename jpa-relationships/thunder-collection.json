@@ -1,0 +1,166 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "JPA Relationships",
+    "collectionId": "60407e5a-e284-42a7-8dac-f986e8b1fc3f",
+    "dateExported": "2024-09-28T02:30:22.782Z",
+    "version": "1.2",
+    "folders": [
+        {
+            "_id": "4f9600cc-8e8b-40e0-be7f-96da01c24464",
+            "name": "OrganizationUnit",
+            "containerId": "",
+            "created": "2024-09-28T02:20:32.874Z",
+            "sortNum": 10000
+        },
+        {
+            "_id": "7894756a-476c-4b15-bef9-efd2e8fe5402",
+            "name": "Role",
+            "containerId": "",
+            "created": "2024-09-28T02:22:16.540Z",
+            "sortNum": 20000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "d0954e84-f34a-4fb1-b638-b13355561c03",
+            "colId": "60407e5a-e284-42a7-8dac-f986e8b1fc3f",
+            "containerId": "4f9600cc-8e8b-40e0-be7f-96da01c24464",
+            "name": "Create",
+            "url": "http://localhost:8080/organizationalunits",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-09-27T02:38:09.484Z",
+            "modified": "2024-09-27T22:09:06.588Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "bc7398c5-56be-48d2-8ec1-49cdfb8b6d4e",
+            "colId": "60407e5a-e284-42a7-8dac-f986e8b1fc3f",
+            "containerId": "7894756a-476c-4b15-bef9-efd2e8fe5402",
+            "name": "Create",
+            "url": "http://localhost:8080/roles",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-09-28T02:22:16.540Z",
+            "modified": "2024-09-28T02:26:01.581Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"DROP_USERS\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "b6d111c5-5761-46fe-bd1b-7e400c9d27e7",
+            "colId": "60407e5a-e284-42a7-8dac-f986e8b1fc3f",
+            "containerId": "4f9600cc-8e8b-40e0-be7f-96da01c24464",
+            "name": "Index",
+            "url": "http://localhost:8080/organizationalunits",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2024-09-27T13:12:10.528Z",
+            "modified": "2024-09-27T13:12:52.712Z",
+            "headers": []
+        },
+        {
+            "_id": "bd4faa9e-19e0-45ea-86b4-8d27f1946354",
+            "colId": "60407e5a-e284-42a7-8dac-f986e8b1fc3f",
+            "containerId": "7894756a-476c-4b15-bef9-efd2e8fe5402",
+            "name": "Index",
+            "url": "http://localhost:8080/roles",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2024-09-28T02:22:16.541Z",
+            "modified": "2024-09-28T02:26:21.515Z",
+            "headers": []
+        },
+        {
+            "_id": "17cb87f8-0ac9-4b44-8d1c-c4d54e893b03",
+            "colId": "60407e5a-e284-42a7-8dac-f986e8b1fc3f",
+            "containerId": "4f9600cc-8e8b-40e0-be7f-96da01c24464",
+            "name": "Update",
+            "url": "http://localhost:8080/organizationalunits/308",
+            "method": "PUT",
+            "sortNum": 30000,
+            "created": "2024-09-27T17:21:27.756Z",
+            "modified": "2024-09-27T22:17:16.904Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"id\": 1000,\n  \"name\": \"Coca cola\",\n  \"parentUnitId\": 29\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "2ff04940-ee90-4850-8eb8-7a252090d56d",
+            "colId": "60407e5a-e284-42a7-8dac-f986e8b1fc3f",
+            "containerId": "7894756a-476c-4b15-bef9-efd2e8fe5402",
+            "name": "Update",
+            "url": "http://localhost:8080/roles/5",
+            "method": "PUT",
+            "sortNum": 30000,
+            "created": "2024-09-28T02:22:16.542Z",
+            "modified": "2024-09-28T02:28:07.898Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"ALERT DEV\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "f16fc4b5-ca33-48fb-99f6-3169942a7c3a",
+            "colId": "60407e5a-e284-42a7-8dac-f986e8b1fc3f",
+            "containerId": "4f9600cc-8e8b-40e0-be7f-96da01c24464",
+            "name": "Show",
+            "url": "http://localhost:8080/organizationalunits/30",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2024-09-27T13:59:58.184Z",
+            "modified": "2024-09-27T22:12:05.241Z",
+            "headers": []
+        },
+        {
+            "_id": "50069be0-6e2e-471d-bb9d-59e4e5090315",
+            "colId": "60407e5a-e284-42a7-8dac-f986e8b1fc3f",
+            "containerId": "7894756a-476c-4b15-bef9-efd2e8fe5402",
+            "name": "Show",
+            "url": "http://localhost:8080/roles/2",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2024-09-28T02:22:16.543Z",
+            "modified": "2024-09-28T02:28:36.219Z",
+            "headers": []
+        },
+        {
+            "_id": "6499b219-e2ff-4f82-a766-d44548d50b22",
+            "colId": "60407e5a-e284-42a7-8dac-f986e8b1fc3f",
+            "containerId": "4f9600cc-8e8b-40e0-be7f-96da01c24464",
+            "name": "Delete",
+            "url": "http://localhost:8080/organizationalunits/35",
+            "method": "DELETE",
+            "sortNum": 50000,
+            "created": "2024-09-27T19:11:59.233Z",
+            "modified": "2024-09-27T22:18:37.606Z",
+            "headers": []
+        },
+        {
+            "_id": "e19f2456-2bfa-4fc6-b607-c3374e280ca0",
+            "colId": "60407e5a-e284-42a7-8dac-f986e8b1fc3f",
+            "containerId": "7894756a-476c-4b15-bef9-efd2e8fe5402",
+            "name": "Delete",
+            "url": "http://localhost:8080/roles/5",
+            "method": "DELETE",
+            "sortNum": 50000,
+            "created": "2024-09-28T02:22:16.544Z",
+            "modified": "2024-09-28T02:28:51.076Z",
+            "headers": []
+        }
+    ],
+    "ref": "qEPCoc_DorBqUWwzcBiw_di4BR72hGkVlXvPPuDO0dFM0NEuVWuQBmuJyAdqS_1nE3WiSwIdE6FTr4z5tw9rCQ"
+}
