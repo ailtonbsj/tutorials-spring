@@ -1,7 +1,7 @@
 package io.github.ailtonbsj.relationships.models;
 
 import java.time.LocalDateTime;
-import java.util.Set;
+import java.util.List;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -34,7 +34,7 @@ public class User {
 
     LocalDateTime createdAt;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "profile_id", referencedColumnName = "id")
     Profile profile;
 
@@ -43,12 +43,12 @@ public class User {
     OrganizationalUnit department;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    Set<ActiveSession> sesssions;
+    List<ActiveSession> sessions;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "permissions",
         joinColumns = @JoinColumn(name = "user_id"),
         inverseJoinColumns = @JoinColumn(name = "role_id")
     )
-    Set<Role> roles;
+    List<Role> roles;
 }
