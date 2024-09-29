@@ -5,38 +5,36 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import io.github.ailtonbsj.relationships.dtos.UserDTO;
-import io.github.ailtonbsj.relationships.mappers.UserMapper;
-import io.github.ailtonbsj.relationships.repositories.UserRepository;
+import io.github.ailtonbsj.relationships.dtos.ActiveSessionDTO;
+import io.github.ailtonbsj.relationships.mappers.ActiveSessionMapper;
+import io.github.ailtonbsj.relationships.repositories.ActiveSessionRepository;
 import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-public class UserService {
+public class ActiveSessionService {
 
-    private final UserRepository repository;
-    private final UserMapper mapper;
+    private final ActiveSessionRepository repository;
+    private final ActiveSessionMapper mapper;
 
-    public List<UserDTO> index() {
+    public List<ActiveSessionDTO> index() {
         return mapper.toDto(repository.findAll());
     }
 
-    public UserDTO create(UserDTO dto) {
+    public ActiveSessionDTO create(ActiveSessionDTO dto) {
         dto.setId(null);
-        dto.setCreatedAt(null);
         var saved = repository.save(mapper.toModel(dto));
         return mapper.toDto(saved);
     }
 
-    public Optional<UserDTO> show(Long id) {
+    public Optional<ActiveSessionDTO> show(Long id) {
         return repository.findById(id).map(mapper::toDto);
     }
 
-    public Optional<UserDTO> update(Long id, UserDTO dto) {
+    public Optional<ActiveSessionDTO> update(Long id, ActiveSessionDTO dto) {
         return repository.findById(id)
                 .map(entity -> {
                     dto.setId(id);
-                    dto.setCreatedAt(entity.getCreatedAt());
                     repository.save(mapper.toModel(dto));
                     return mapper.toDto(entity);
                 });
