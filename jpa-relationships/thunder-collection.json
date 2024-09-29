@@ -2,7 +2,7 @@
     "clientName": "Thunder Client",
     "collectionName": "JPA Relationships",
     "collectionId": "60407e5a-e284-42a7-8dac-f986e8b1fc3f",
-    "dateExported": "2024-09-28T02:30:22.782Z",
+    "dateExported": "2024-09-29T20:32:50.224Z",
     "version": "1.2",
     "folders": [
         {
@@ -18,6 +18,27 @@
             "containerId": "",
             "created": "2024-09-28T02:22:16.540Z",
             "sortNum": 20000
+        },
+        {
+            "_id": "340afd18-7669-4d91-b72d-27e041090ae4",
+            "name": "ActiveSession",
+            "containerId": "",
+            "created": "2024-09-29T02:07:25.303Z",
+            "sortNum": 22500
+        },
+        {
+            "_id": "8ab42f59-20c6-43fe-bad9-3d0efdc30190",
+            "name": "User",
+            "containerId": "",
+            "created": "2024-09-28T04:01:35.573Z",
+            "sortNum": 25000
+        },
+        {
+            "_id": "546ee404-77b9-4c68-8780-5ec0cabbcf2f",
+            "name": "Profile",
+            "containerId": "",
+            "created": "2024-09-28T03:18:48.394Z",
+            "sortNum": 30000
         }
     ],
     "requests": [
@@ -30,11 +51,11 @@
             "method": "POST",
             "sortNum": 10000,
             "created": "2024-09-27T02:38:09.484Z",
-            "modified": "2024-09-27T22:09:06.588Z",
+            "modified": "2024-09-29T20:20:12.828Z",
             "headers": [],
             "body": {
                 "type": "json",
-                "raw": "{\n}",
+                "raw": "{\n  \"name\": \"Skynet LTDA\",\n  \"parentUnitId\": 5\n}",
                 "form": []
             }
         },
@@ -47,11 +68,62 @@
             "method": "POST",
             "sortNum": 10000,
             "created": "2024-09-28T02:22:16.540Z",
-            "modified": "2024-09-28T02:26:01.581Z",
+            "modified": "2024-09-29T20:08:15.958Z",
             "headers": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"name\": \"DROP_USERS\"\n}",
+                "raw": "{\n  \"name\": \"UPDATE_USERS\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "6811231c-1f71-4c8a-b323-decfbc40f54b",
+            "colId": "60407e5a-e284-42a7-8dac-f986e8b1fc3f",
+            "containerId": "546ee404-77b9-4c68-8780-5ec0cabbcf2f",
+            "name": "Create",
+            "url": "http://localhost:8080/profiles",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-09-28T03:18:48.395Z",
+            "modified": "2024-09-29T20:14:11.439Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"John\",\n  \"phone\": 992648735,\n  \"birthday\": \"2000-12-01\",\n  \"biography\": \"Winter is comming\",\n  \"country\": \"King's landing\",\n  \"salary\": 5500.25,\n  \"instagram\": \"snow\",\n  \"avatarUrl\": \"http://pics.com/snow.png\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "5c912acc-a1a7-432e-bfc8-296ea476a52e",
+            "colId": "60407e5a-e284-42a7-8dac-f986e8b1fc3f",
+            "containerId": "8ab42f59-20c6-43fe-bad9-3d0efdc30190",
+            "name": "Create",
+            "url": "http://localhost:8080/users",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-09-28T04:01:35.573Z",
+            "modified": "2024-09-29T20:26:51.044Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"username\": \"john\",\n  \"password\": \"1234\",\n  \"isActive\": true,\n  \"departmentId\": 5,\n  \"rolesId\": [1,2,4]\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "8be31928-aafd-484c-a206-e8e2e4d00725",
+            "colId": "60407e5a-e284-42a7-8dac-f986e8b1fc3f",
+            "containerId": "340afd18-7669-4d91-b72d-27e041090ae4",
+            "name": "Create",
+            "url": "http://localhost:8080/activesessions",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-09-29T02:07:25.303Z",
+            "modified": "2024-09-29T20:30:47.616Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"device\": \"Iphone\",\n  \"agent\": \"Google Chrome\",\n  \"signedIn\": \"2024-09-28T23:20:00\",\n  \"userId\": 1\n}",
                 "form": []
             }
         },
@@ -80,19 +152,55 @@
             "headers": []
         },
         {
+            "_id": "0b7d89cd-b40d-4d7b-ab52-af337e5bead7",
+            "colId": "60407e5a-e284-42a7-8dac-f986e8b1fc3f",
+            "containerId": "546ee404-77b9-4c68-8780-5ec0cabbcf2f",
+            "name": "Index",
+            "url": "http://localhost:8080/profiles",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2024-09-28T03:18:48.396Z",
+            "modified": "2024-09-28T03:19:16.555Z",
+            "headers": []
+        },
+        {
+            "_id": "5d1bd164-caf3-4fd1-abb0-b7e9a56df941",
+            "colId": "60407e5a-e284-42a7-8dac-f986e8b1fc3f",
+            "containerId": "8ab42f59-20c6-43fe-bad9-3d0efdc30190",
+            "name": "Index",
+            "url": "http://localhost:8080/users",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2024-09-28T04:01:35.574Z",
+            "modified": "2024-09-28T04:01:51.603Z",
+            "headers": []
+        },
+        {
+            "_id": "62090e5f-5774-44d1-a22e-def5f39f6981",
+            "colId": "60407e5a-e284-42a7-8dac-f986e8b1fc3f",
+            "containerId": "340afd18-7669-4d91-b72d-27e041090ae4",
+            "name": "Index",
+            "url": "http://localhost:8080/activesessions",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2024-09-29T02:07:25.304Z",
+            "modified": "2024-09-29T02:20:22.447Z",
+            "headers": []
+        },
+        {
             "_id": "17cb87f8-0ac9-4b44-8d1c-c4d54e893b03",
             "colId": "60407e5a-e284-42a7-8dac-f986e8b1fc3f",
             "containerId": "4f9600cc-8e8b-40e0-be7f-96da01c24464",
             "name": "Update",
-            "url": "http://localhost:8080/organizationalunits/308",
+            "url": "http://localhost:8080/organizationalunits/6",
             "method": "PUT",
             "sortNum": 30000,
             "created": "2024-09-27T17:21:27.756Z",
-            "modified": "2024-09-27T22:17:16.904Z",
+            "modified": "2024-09-29T20:22:33.875Z",
             "headers": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"id\": 1000,\n  \"name\": \"Coca cola\",\n  \"parentUnitId\": 29\n}",
+                "raw": "  {\n    \"name\": \"Monsters SA\",\n    \"parentUnitId\": 5\n  }",
                 "form": []
             }
         },
@@ -101,15 +209,66 @@
             "colId": "60407e5a-e284-42a7-8dac-f986e8b1fc3f",
             "containerId": "7894756a-476c-4b15-bef9-efd2e8fe5402",
             "name": "Update",
-            "url": "http://localhost:8080/roles/5",
+            "url": "http://localhost:8080/roles/4",
             "method": "PUT",
             "sortNum": 30000,
             "created": "2024-09-28T02:22:16.542Z",
-            "modified": "2024-09-28T02:28:07.898Z",
+            "modified": "2024-09-29T20:08:57.767Z",
             "headers": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"name\": \"ALERT DEV\"\n}",
+                "raw": "{\n  \"name\": \"DELETE_USERS\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "c2019cde-69ea-4906-8fe5-0b614cfc88a5",
+            "colId": "60407e5a-e284-42a7-8dac-f986e8b1fc3f",
+            "containerId": "546ee404-77b9-4c68-8780-5ec0cabbcf2f",
+            "name": "Update",
+            "url": "http://localhost:8080/profiles/3",
+            "method": "PUT",
+            "sortNum": 30000,
+            "created": "2024-09-28T03:18:48.397Z",
+            "modified": "2024-09-29T20:15:24.541Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "  {\n    \"name\": \"John Snow\",\n    \"phone\": 992648735,\n    \"birthday\": \"2000-12-01\",\n    \"biography\": \"Winter is comming\",\n    \"country\": \"King's landing\",\n    \"salary\": 7500.25,\n    \"instagram\": \"snow\",\n    \"avatarUrl\": \"http://pics.com/snow.png\"\n  }",
+                "form": []
+            }
+        },
+        {
+            "_id": "f97009dc-b739-4dac-8fda-1573b6574143",
+            "colId": "60407e5a-e284-42a7-8dac-f986e8b1fc3f",
+            "containerId": "8ab42f59-20c6-43fe-bad9-3d0efdc30190",
+            "name": "Update",
+            "url": "http://localhost:8080/users/4",
+            "method": "PUT",
+            "sortNum": 30000,
+            "created": "2024-09-28T04:01:35.575Z",
+            "modified": "2024-09-29T20:29:41.224Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"username\": \"john\",\n  \"password\": \"senha\",\n  \"isActive\": true,\n  \"departmentId\": 5,\n  \"rolesId\": null\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "b42fe1ea-4de9-410a-a811-ba422fd306b0",
+            "colId": "60407e5a-e284-42a7-8dac-f986e8b1fc3f",
+            "containerId": "340afd18-7669-4d91-b72d-27e041090ae4",
+            "name": "Update",
+            "url": "http://localhost:8080/activesessions/3",
+            "method": "PUT",
+            "sortNum": 30000,
+            "created": "2024-09-29T02:07:25.305Z",
+            "modified": "2024-09-29T20:31:28.303Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"device\": \"Xiaomi\",\n  \"agent\": \"Google Chrome\",\n  \"signedIn\": \"2024-09-28T23:20:00\",\n  \"userId\": 1\n}",
                 "form": []
             }
         },
@@ -118,11 +277,11 @@
             "colId": "60407e5a-e284-42a7-8dac-f986e8b1fc3f",
             "containerId": "4f9600cc-8e8b-40e0-be7f-96da01c24464",
             "name": "Show",
-            "url": "http://localhost:8080/organizationalunits/30",
+            "url": "http://localhost:8080/organizationalunits/5",
             "method": "GET",
             "sortNum": 40000,
             "created": "2024-09-27T13:59:58.184Z",
-            "modified": "2024-09-27T22:12:05.241Z",
+            "modified": "2024-09-29T20:22:03.584Z",
             "headers": []
         },
         {
@@ -138,15 +297,51 @@
             "headers": []
         },
         {
+            "_id": "4bbbda93-6954-4f1b-bd96-2939fc378f3c",
+            "colId": "60407e5a-e284-42a7-8dac-f986e8b1fc3f",
+            "containerId": "546ee404-77b9-4c68-8780-5ec0cabbcf2f",
+            "name": "Show",
+            "url": "http://localhost:8080/profiles/3",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2024-09-28T03:18:48.398Z",
+            "modified": "2024-09-29T20:15:50.408Z",
+            "headers": []
+        },
+        {
+            "_id": "a600858b-8e57-4e9e-b45d-80533bebffd4",
+            "colId": "60407e5a-e284-42a7-8dac-f986e8b1fc3f",
+            "containerId": "8ab42f59-20c6-43fe-bad9-3d0efdc30190",
+            "name": "Show",
+            "url": "http://localhost:8080/users/4",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2024-09-28T04:01:35.576Z",
+            "modified": "2024-09-29T20:27:35.755Z",
+            "headers": []
+        },
+        {
+            "_id": "5c4a185f-33f1-49cf-b932-25de3352b673",
+            "colId": "60407e5a-e284-42a7-8dac-f986e8b1fc3f",
+            "containerId": "340afd18-7669-4d91-b72d-27e041090ae4",
+            "name": "Show",
+            "url": "http://localhost:8080/activesessions/2",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2024-09-29T02:07:25.306Z",
+            "modified": "2024-09-29T20:31:44.914Z",
+            "headers": []
+        },
+        {
             "_id": "6499b219-e2ff-4f82-a766-d44548d50b22",
             "colId": "60407e5a-e284-42a7-8dac-f986e8b1fc3f",
             "containerId": "4f9600cc-8e8b-40e0-be7f-96da01c24464",
             "name": "Delete",
-            "url": "http://localhost:8080/organizationalunits/35",
+            "url": "http://localhost:8080/organizationalunits/6",
             "method": "DELETE",
             "sortNum": 50000,
             "created": "2024-09-27T19:11:59.233Z",
-            "modified": "2024-09-27T22:18:37.606Z",
+            "modified": "2024-09-29T20:24:26.469Z",
             "headers": []
         },
         {
@@ -158,9 +353,45 @@
             "method": "DELETE",
             "sortNum": 50000,
             "created": "2024-09-28T02:22:16.544Z",
-            "modified": "2024-09-28T02:28:51.076Z",
+            "modified": "2024-09-29T20:09:13.617Z",
+            "headers": []
+        },
+        {
+            "_id": "9ce58427-002d-423e-8ba6-4e7cf967cff1",
+            "colId": "60407e5a-e284-42a7-8dac-f986e8b1fc3f",
+            "containerId": "546ee404-77b9-4c68-8780-5ec0cabbcf2f",
+            "name": "Delete",
+            "url": "http://localhost:8080/profiles/3",
+            "method": "DELETE",
+            "sortNum": 50000,
+            "created": "2024-09-28T03:18:48.399Z",
+            "modified": "2024-09-29T20:16:00.630Z",
+            "headers": []
+        },
+        {
+            "_id": "98fde9b3-1dbe-4b54-a228-d8c246de6f0a",
+            "colId": "60407e5a-e284-42a7-8dac-f986e8b1fc3f",
+            "containerId": "8ab42f59-20c6-43fe-bad9-3d0efdc30190",
+            "name": "Delete",
+            "url": "http://localhost:8080/users/4",
+            "method": "DELETE",
+            "sortNum": 50000,
+            "created": "2024-09-28T04:01:35.577Z",
+            "modified": "2024-09-29T20:30:04.238Z",
+            "headers": []
+        },
+        {
+            "_id": "891049e8-6055-4fbf-93c6-061186e00880",
+            "colId": "60407e5a-e284-42a7-8dac-f986e8b1fc3f",
+            "containerId": "340afd18-7669-4d91-b72d-27e041090ae4",
+            "name": "Delete",
+            "url": "http://localhost:8080/activesessions/3",
+            "method": "DELETE",
+            "sortNum": 50000,
+            "created": "2024-09-29T02:07:25.307Z",
+            "modified": "2024-09-29T20:32:12.238Z",
             "headers": []
         }
     ],
-    "ref": "qEPCoc_DorBqUWwzcBiw_di4BR72hGkVlXvPPuDO0dFM0NEuVWuQBmuJyAdqS_1nE3WiSwIdE6FTr4z5tw9rCQ"
+    "ref": "qEPCoc_DorBqUWwzcBiw_e3DbOlQ6W_E8DbD1JY26KBjHjvnkVe8B_Wj3Xsx4p35pY2Ze7JB56HtqSu7wVW50A"
 }
