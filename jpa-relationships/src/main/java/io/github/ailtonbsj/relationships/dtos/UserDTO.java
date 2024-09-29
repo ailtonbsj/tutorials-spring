@@ -27,7 +27,7 @@ public class UserDTO {
     @NotNull
     Long departmentId;
 
-    // List<Long> sessionsId;
+    List<Long> activeSessionsId;
 
     List<Long> rolesId;
 }

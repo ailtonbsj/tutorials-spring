@@ -42,13 +42,13 @@ public class User {
     @JoinColumn(name = "department_id")
     OrganizationalUnit department;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    List<ActiveSession> sessions;
-
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "permissions",
         joinColumns = @JoinColumn(name = "user_id"),
         inverseJoinColumns = @JoinColumn(name = "role_id")
     )
     List<Role> roles;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    List<ActiveSession> activeSessions;
 }

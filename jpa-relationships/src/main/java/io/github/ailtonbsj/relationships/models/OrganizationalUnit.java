@@ -1,9 +1,7 @@
 package io.github.ailtonbsj.relationships.models;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -27,6 +25,6 @@ public class OrganizationalUnit {
     @JoinColumn(name = "parentUnit")
     OrganizationalUnit parentUnit;
 
-    @OneToMany(mappedBy = "department", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    Set<User> users = new HashSet<>();
+    @OneToMany(mappedBy = "department", fetch = FetchType.LAZY)
+    List<User> users;
 }

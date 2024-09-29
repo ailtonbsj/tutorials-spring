@@ -6,6 +6,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
 import io.github.ailtonbsj.relationships.dtos.UserDTO;
+import io.github.ailtonbsj.relationships.models.ActiveSession;
 import io.github.ailtonbsj.relationships.models.OrganizationalUnit;
 import io.github.ailtonbsj.relationships.models.Profile;
 import io.github.ailtonbsj.relationships.models.Role;
@@ -20,7 +21,7 @@ public interface UserMapper {
     @Mapping(target="department", source="departmentId")
     @Mapping(target="profile", source="profileId")
     @Mapping(target="roles", source="rolesId")
-    @Mapping(target="sessions", ignore=true)
+    @Mapping(target="activeSessions", ignore=true)
     User toModel(UserDTO dto);
 
     default OrganizationalUnit toOranizationalUnit(Long ouId) {
@@ -50,11 +51,17 @@ public interface UserMapper {
     @Mapping(target="profileId", source="profile.id")
     @Mapping(target="departmentId", source="department.id")
     @Mapping(target="rolesId", source="roles")
+    @Mapping(target="activeSessionsId", source="activeSessions")
     UserDTO toDto(User model);
 
     default List<Long> toRoleIds(List<Role> roles) {
         if(roles == null) return null;
         return roles.stream().map(Role::getId).toList();
+    }
+
+    default List<Long> toActiveSessionsId(List<ActiveSession> activeSessions) {
+        if(activeSessions == null) return null;
+        return activeSessions.stream().map(ActiveSession::getId).toList();
     }
 
     List<UserDTO> toDto(List<User> model);

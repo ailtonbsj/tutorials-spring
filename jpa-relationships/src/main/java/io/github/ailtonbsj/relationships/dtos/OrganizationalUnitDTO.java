@@ -1,5 +1,7 @@
 package io.github.ailtonbsj.relationships.dtos;
 
+import java.util.List;
+
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
@@ -11,4 +13,6 @@ public class OrganizationalUnitDTO {
     String name;
 
     Long parentUnitId;
+
+    List<Long> usersId;
 }
