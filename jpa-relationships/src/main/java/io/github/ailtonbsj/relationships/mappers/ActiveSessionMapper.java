@@ -16,10 +16,7 @@ public interface ActiveSessionMapper {
     ActiveSession toModel(ActiveSessionDTO dto);
 
     default User toUser(Long id) {
-        if(id == null) return null;
-        var user = new User();
-        user.setId(id);
-        return user;
+        return MapperUtils.toEntity(id, User.class);
     }
 
     @Mapping(target="userId", source="user.id")
