@@ -14,39 +14,40 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import io.github.ailtonbsj.mybatis.dtos.UserDTO;
-import io.github.ailtonbsj.mybatis.services.UserService;
+import io.github.ailtonbsj.mybatis.dtos.RoleDTO;
+import io.github.ailtonbsj.mybatis.services.RoleService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/roles")
 @RequiredArgsConstructor
-public class UserController {
+public class RoleController {
 
-    private final UserService service;
+    private final RoleService service;
 
     @GetMapping
     @ResponseStatus(value = HttpStatus.OK)
-    public List<UserDTO> index() {
+    public List<RoleDTO> index() {
         return service.index();
     }
 
     @PostMapping
     @ResponseStatus(value = HttpStatus.CREATED)
-    public UserDTO create(@Valid @RequestBody UserDTO dto) {
+    public RoleDTO create(@Valid @RequestBody RoleDTO dto) {
         return service.create(dto);
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<UserDTO> show(@PathVariable Long id) {
+    public ResponseEntity<RoleDTO> show(@PathVariable Long id) {
         return service.show(id)
                 .map(dto -> ResponseEntity.ok(dto))
                 .orElse(ResponseEntity.notFound().build());
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<UserDTO> update(@PathVariable Long id, @Valid @RequestBody UserDTO dto) {
+    public ResponseEntity<RoleDTO> update(@PathVariable Long id,
+            @Valid @RequestBody RoleDTO dto) {
         return service.update(id, dto)
                 .map(ent -> ResponseEntity.ok(ent))
                 .orElse(ResponseEntity.notFound().build());

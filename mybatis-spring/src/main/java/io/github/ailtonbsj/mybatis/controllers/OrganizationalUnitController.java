@@ -14,39 +14,40 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import io.github.ailtonbsj.mybatis.dtos.UserDTO;
-import io.github.ailtonbsj.mybatis.services.UserService;
+import io.github.ailtonbsj.mybatis.dtos.OrganizationalUnitDTO;
+import io.github.ailtonbsj.mybatis.services.OrganizationalUnitService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/organizationalunits")
 @RequiredArgsConstructor
-public class UserController {
+public class OrganizationalUnitController {
 
-    private final UserService service;
+    private final OrganizationalUnitService service;
 
     @GetMapping
     @ResponseStatus(value = HttpStatus.OK)
-    public List<UserDTO> index() {
+    public List<OrganizationalUnitDTO> index() {
         return service.index();
     }
 
     @PostMapping
     @ResponseStatus(value = HttpStatus.CREATED)
-    public UserDTO create(@Valid @RequestBody UserDTO dto) {
+    public OrganizationalUnitDTO create(@Valid @RequestBody OrganizationalUnitDTO dto) {
         return service.create(dto);
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<UserDTO> show(@PathVariable Long id) {
+    public ResponseEntity<OrganizationalUnitDTO> show(@PathVariable Long id) {
         return service.show(id)
                 .map(dto -> ResponseEntity.ok(dto))
                 .orElse(ResponseEntity.notFound().build());
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<UserDTO> update(@PathVariable Long id, @Valid @RequestBody UserDTO dto) {
+    public ResponseEntity<OrganizationalUnitDTO> update(@PathVariable Long id,
+            @Valid @RequestBody OrganizationalUnitDTO dto) {
         return service.update(id, dto)
                 .map(ent -> ResponseEntity.ok(ent))
                 .orElse(ResponseEntity.notFound().build());

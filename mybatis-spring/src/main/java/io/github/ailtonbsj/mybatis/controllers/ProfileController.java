@@ -14,39 +14,40 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import io.github.ailtonbsj.mybatis.dtos.UserDTO;
-import io.github.ailtonbsj.mybatis.services.UserService;
+import io.github.ailtonbsj.mybatis.dtos.ProfileDTO;
+import io.github.ailtonbsj.mybatis.services.ProfileService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/profiles")
 @RequiredArgsConstructor
-public class UserController {
+public class ProfileController {
 
-    private final UserService service;
+    private final ProfileService service;
 
     @GetMapping
     @ResponseStatus(value = HttpStatus.OK)
-    public List<UserDTO> index() {
+    public List<ProfileDTO> index() {
         return service.index();
     }
 
     @PostMapping
     @ResponseStatus(value = HttpStatus.CREATED)
-    public UserDTO create(@Valid @RequestBody UserDTO dto) {
+    public ProfileDTO create(@Valid @RequestBody ProfileDTO dto) {
         return service.create(dto);
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<UserDTO> show(@PathVariable Long id) {
+    public ResponseEntity<ProfileDTO> show(@PathVariable Long id) {
         return service.show(id)
                 .map(dto -> ResponseEntity.ok(dto))
                 .orElse(ResponseEntity.notFound().build());
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<UserDTO> update(@PathVariable Long id, @Valid @RequestBody UserDTO dto) {
+    public ResponseEntity<ProfileDTO> update(@PathVariable Long id,
+            @Valid @RequestBody ProfileDTO dto) {
         return service.update(id, dto)
                 .map(ent -> ResponseEntity.ok(ent))
                 .orElse(ResponseEntity.notFound().build());
