@@ -35,8 +35,8 @@ public class OrganizationalUnitService {
     public Optional<OrganizationalUnitDTO> update(Long id, OrganizationalUnitDTO dto) {
         dto.setId(id);
         return dao.findById(id)
-                .map(ent -> dao.save(mapper.toModel(dto)))
-                .map(ent -> mapper.toDto(ent));
+                .map(entity -> dao.save(mapper.toModel(dto)))
+                .map(updated -> mapper.toDto(updated));
     }
 
     public boolean destroy(Long id) {

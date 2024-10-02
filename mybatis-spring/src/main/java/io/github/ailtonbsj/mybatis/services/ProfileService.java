@@ -5,9 +5,9 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import io.github.ailtonbsj.mybatis.daos.ProfileDAO;
 import io.github.ailtonbsj.mybatis.dtos.ProfileDTO;
 import io.github.ailtonbsj.mybatis.mappers.ProfileMapper;
-import io.github.ailtonbsj.mybatis.daos.ProfileDAO;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -34,8 +34,8 @@ public class ProfileService {
     public Optional<ProfileDTO> update(Long id, ProfileDTO dto) {
         dto.setId(id);
         return dao.findById(id)
-                .map(ent -> dao.save(mapper.toModel(dto)))
-                .map(ent -> mapper.toDto(ent));
+                .map(entity -> dao.save(mapper.toModel(dto)))
+                .map(updated -> mapper.toDto(updated));
     }
 
     public boolean destroy(Long id) {

@@ -32,12 +32,10 @@ public class ActiveSessionService {
     }
 
     public Optional<ActiveSessionDTO> update(Long id, ActiveSessionDTO dto) {
+        dto.setId(id);
         return dao.findById(id)
-                .map(entity -> {
-                    dto.setId(id);
-                    dao.save(mapper.toModel(dto));
-                    return mapper.toDto(entity);
-                });
+                .map(entity -> dao.save(mapper.toModel(dto)))
+                .map(updated -> mapper.toDto(updated));
     }
 
     public boolean destroy(Long id) {

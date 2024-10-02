@@ -46,6 +46,6 @@ public interface ProfileDAO {
             update(model);
         else
             insert(model);
-        return model;
+        return findById(model.getId()).get();
     }
 }

@@ -46,23 +46,6 @@ public interface UserDAO {
         deleteUserById(id);
     }
 
-    @Transactional
-    default User save(User model) {
-
-        if (findById(model.getId()).isPresent()) {
-            deletePermsByUserId(model.getId());
-            update(model);
-        } else {
-            insert(model);
-        }
-
-        var roles = model.getRoles();
-        if (roles != null)
-            roles.forEach(role -> insertPermission(model, role));
-
-        return findById(model.getId()).get();
-    }
-
     @Insert("""
             insert into users (
                 id, username, password, is_active, department_id, profile_id, created_at
@@ -96,5 +79,22 @@ public interface UserDAO {
 
     @Delete("delete from permissions where user_id = #{id}")
     void deletePermsByUserId(Long id);
+
+    @Transactional
+    default User save(User model) {
+
+        if (findById(model.getId()).isPresent()) {
+            deletePermsByUserId(model.getId());
+            update(model);
+        } else {
+            insert(model);
+        }
+
+        var roles = model.getRoles();
+        if (roles != null)
+            roles.forEach(role -> insertPermission(model, role));
+
+        return findById(model.getId()).get();
+    }
 
 }

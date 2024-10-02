@@ -36,7 +36,7 @@ public interface RoleDAO {
             update(model);
         else
             insert(model);
-        return model;
+        return findById(model.getId()).get();
     }
 
 }
