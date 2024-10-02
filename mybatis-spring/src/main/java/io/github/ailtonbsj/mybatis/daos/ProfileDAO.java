@@ -14,6 +14,7 @@ import io.github.ailtonbsj.mybatis.models.Profile;
 
 @Mapper
 public interface ProfileDAO {
+
     @Select("select * from profiles")
     List<Profile> findAll();
 
@@ -48,4 +49,5 @@ public interface ProfileDAO {
             insert(model);
         return findById(model.getId()).get();
     }
+    
 }

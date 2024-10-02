@@ -23,20 +23,22 @@ import jakarta.transaction.Transactional;
 @Mapper
 public interface UserDAO {
 
-    @Select("select u.*, s.id userId from users u left join users s on u.id = s.id where u.id = #{id}")
+    final String OU_BY_ID = "io.github.ailtonbsj.mybatis.daos.OrganizationalUnitDAO.findSimpleById";
+    final String PROFILE_BY_ID = "io.github.ailtonbsj.mybatis.daos.ProfileDAO.findById";
+    final String SESSION_BY_USER = "io.github.ailtonbsj.mybatis.daos.ActiveSessionDAO.findByUserId";
+
+    @Select("select u.*, u.id user_id, u.id id_session from users u where u.id = #{id}")
     @Results(id = "userResultMap", value = {
             @Result(property = "isActive", column = "is_active"),
             @Result(property = "createdAt", column = "created_at"),
-            @Result(property = "department", column = "department_id",
-                many = @Many(select = "io.github.ailtonbsj.mybatis.daos.OrganizationalUnitDAO.findSimpleById", fetchType = FetchType.LAZY)),
-            @Result(property = "profile", column = "profile_id",
-                one = @One(select = "io.github.ailtonbsj.mybatis.daos.ProfileDAO.findById", fetchType = FetchType.LAZY)),
-            @Result(property = "roles", column = "userId", javaType = List.class,
-                many = @Many(select = "permissionsByUserId", fetchType = FetchType.LAZY))
+            @Result(property = "department", column = "department_id", many = @Many(select = OU_BY_ID, fetchType = FetchType.LAZY)),
+            @Result(property = "profile", column = "profile_id", one = @One(select = PROFILE_BY_ID, fetchType = FetchType.LAZY)),
+            @Result(property = "roles", column = "user_id", many = @Many(select = "permissionsByUserId", fetchType = FetchType.LAZY)),
+            @Result(property = "activeSessions", column = "id_session", many = @Many(select = SESSION_BY_USER, fetchType = FetchType.LAZY))
     })
     Optional<User> findById(Long id);
 
-    @Select("select u.*, s.id userId from users u left join users s on u.id = s.id")
+    @Select("select u.*, u.id user_id, u.id id_session from users u")
     @ResultMap("userResultMap")
     List<User> findAll();
 
@@ -82,7 +84,6 @@ public interface UserDAO {
 
     @Transactional
     default User save(User model) {
-
         if (findById(model.getId()).isPresent()) {
             deletePermsByUserId(model.getId());
             update(model);
@@ -96,5 +97,9 @@ public interface UserDAO {
 
         return findById(model.getId()).get();
     }
+
+    @Select("select u.*, u.id user_id, u.id id_session from users u where u.department_id = #{ouId}")
+    @ResultMap("userResultMap")
+    List<User> findByOU(Long ouId);
 
 }

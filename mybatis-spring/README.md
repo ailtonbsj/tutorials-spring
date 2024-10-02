@@ -1,5 +1,9 @@
 # Using MyBatis with Spring Boot
 
+### ER Diagram
+
+![](er-diagram.png)
+
 ### History of commands
 
 ```bash

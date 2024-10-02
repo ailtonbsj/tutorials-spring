@@ -9,6 +9,7 @@ import org.apache.ibatis.annotations.Many;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Result;
+import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
@@ -19,17 +20,18 @@ import io.github.ailtonbsj.mybatis.models.OrganizationalUnit;
 @Mapper
 public interface OrganizationalUnitDAO {
 
-    @Select("select * from organizational_unit")
-    @Results({
-            @Result(property = "parentUnit", column = "parent_unit", many = @Many(select = "findSimpleById", fetchType = FetchType.LAZY))
-    })
-    List<OrganizationalUnit> findAll();
+    final String USER_BY_OU = "io.github.ailtonbsj.mybatis.daos.UserDAO.findByOU";
 
-    @Select("select * from organizational_unit where id = #{id}")
-    @Results({
-            @Result(property = "parentUnit", column = "parent_unit", many = @Many(select = "findSimpleById", fetchType = FetchType.LAZY))
+    @Select("select o.*, o.id ou_id from organizational_unit o where o.id = #{id}")
+    @Results(id = "ouResultMap", value = {
+            @Result(property = "parentUnit", column = "parent_unit", many = @Many(select = "findSimpleById", fetchType = FetchType.LAZY)),
+            @Result(property = "users", column = "ou_id", many = @Many(select = USER_BY_OU, fetchType = FetchType.LAZY))
     })
     Optional<OrganizationalUnit> findById(Long id);
+
+    @Select("select o.*, o.id ou_id from organizational_unit o")
+    @ResultMap("ouResultMap")
+    List<OrganizationalUnit> findAll();
 
     @Select("select * from organizational_unit where id = #{id}")
     Optional<OrganizationalUnit> findSimpleById(Long id);
