@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="io.github.ailtonbsj.mybatis.user.UserDAO">
+
+    <resultMap id="userResultMap" type="io.github.ailtonbsj.mybatis.user.User">
+        <result property="isActive" column="is_active" />
+        <result property="createdAt" column="created_at" />
+        <association property="department" column="department_id" fetchType="lazy"
+            select="io.github.ailtonbsj.mybatis.organizationalunit.OrganizationalUnitDAO.findSimpleById" />
+        <association property="profile" column="profile_id" fetchType="lazy"
+            select="io.github.ailtonbsj.mybatis.profile.ProfileDAO.findById" />
+        <collection property="roles" column="user_id" fetchType="lazy" select="permissionsByUserId" />
+        <collection property="activeSessions" column="id_session" fetchType="lazy"
+            select="io.github.ailtonbsj.mybatis.activesession.ActiveSessionDAO.findByUserId" />
+    </resultMap>
+
+    <select id="findById" resultMap="userResultMap">
+        select u.*, u.id user_id, u.id id_session from users u where u.id = #{id}
+    </select>
+
+    <select id="findAll" resultMap="userResultMap">
+        select u.*, u.id user_id, u.id id_session from users u
+    </select>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        insert into users (
+            username, password, is_active, department_id, profile_id, created_at
+        ) values (
+            #{username}, #{password}, #{isActive}, #{department.id}, #{profile.id}, #{createdAt}
+        )
+    </insert>
+
+    <update id="update">
+        update users set
+            username = #{username}, password = #{password}, is_active = #{isActive},
+            department_id = #{department.id}, profile_id = #{profile.id}, created_at = #{createdAt}
+        where id = #{id}
+    </update>
+
+    <delete id="deleteUserById">
+        delete from users where id = #{id}
+    </delete>
+
+    <insert id="insertPermission">
+        insert into permissions (user_id, role_id) values (#{user.id}, #{role.id})
+    </insert>
+
+    <select id="permissionsByUserId">
+        select r.* from permissions p
+        left join roles r on p.role_id = r.id
+        where user_id = #{id}
+    </select>
+
+    <delete id="deletePermsByUserId">
+        delete from permissions where user_id = #{id}
+    </delete>
+
+    <select id="findByOU" resultMap="userResultMap">
+        select u.*, u.id user_id, u.id id_session from users u where u.department_id = #{ouId}
+    </select>
+
+</mapper>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="io.github.ailtonbsj.mybatis.profile.ProfileDAO">
+
+    <select id="findAll">
+        select * from profiles
+    </select>
+
+    <select id="findById">
+        select * from profiles where id = #{id}
+    </select>
+
+    <delete id="deleteById">
+        delete from profiles where id = #{id}
+    </delete>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        insert into profiles (
+            avatar_url, biography, birthday, country, instagram, name, phone, salary
+        ) values (
+            #{avatarUrl}, #{biography}, #{birthday}, #{country}, #{instagram}, #{name}, #{phone}, #{salary}
+        )
+    </insert>
+
+    <update id="update">
+        update profiles set
+            avatar_url = #{avatarUrl}, biography = #{biography}, birthday = #{birthday}, country = #{country},
+            instagram = #{instagram}, name = #{name}, phone = #{phone}, salary = #{salary}
+        where id = #{id}
+    </update>
+
+</mapper>

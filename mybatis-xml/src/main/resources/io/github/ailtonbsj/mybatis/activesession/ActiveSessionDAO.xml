@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="io.github.ailtonbsj.mybatis.activesession.ActiveSessionDAO">
+
+    <resultMap id="activeSessionResultMap" type="io.github.ailtonbsj.mybatis.activesession.ActiveSession">
+        <result property="signedIn" column="signed_in" />
+        <association property="user" column="user_id" fetchType="lazy"
+            select="io.github.ailtonbsj.mybatis.user.UserDAO.findById" />
+    </resultMap>
+
+    <select id="findById" resultMap="activeSessionResultMap">
+        select * from active_session where id = #{id}
+    </select>
+
+    <select id="findAll" resultMap="activeSessionResultMap">
+        select * from active_session
+    </select>
+
+    <delete id="deleteById">
+        delete from active_session where id = #{id}
+    </delete>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        insert into active_session (
+            agent, device, signed_in, user_id
+        ) values (
+            #{agent}, #{device}, #{signedIn}, #{user.id}
+        )
+    </insert>
+
+    <update id="update">
+        update active_session set
+            agent = #{agent}, device = #{device}, signed_in = #{signedIn}, user_id = #{user.id}
+        where id = #{id}
+    </update>
+
+    <select id="findByUserId" resultMap="activeSessionResultMap">
+        select * from active_session where user_id = #{userId}
+    </select>
+
+</mapper>

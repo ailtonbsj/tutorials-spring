@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="io.github.ailtonbsj.mybatis.organizationalunit.OrganizationalUnitDAO">
+
+    <resultMap id="ouResultMap" type="io.github.ailtonbsj.mybatis.organizationalunit.OrganizationalUnit">
+        <association property="parentUnit" column="parent_unit" select="findSimpleById" />
+        <collection property="users" column="ou_id" select="io.github.ailtonbsj.mybatis.user.UserDAO.findByOU" />
+    </resultMap>
+
+    <select id="findById" resultMap="ouResultMap">
+        select
+            o.*, o.id ou_id
+        from organizational_unit o
+        where
+            o.id = #{id}
+    </select>
+
+    <select id="findAll" resultMap="ouResultMap">
+        select o.*, o.id ou_id from organizational_unit o
+    </select>
+
+    <select id="findSimpleById">
+        select * from organizational_unit where id = #{id}
+    </select>
+
+    <delete id="deleteById">
+        delete from organizational_unit where id = #{id}
+    </delete>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        insert into organizational_unit (
+            name, parent_unit
+        ) values (
+            #{name}, #{parentUnit.id}
+        )
+    </insert>
+
+    <update id="update">
+        update organizational_unit set
+            name = #{name}, parent_unit = #{parentUnit.id}
+        where id = #{id}
+    </update>
+
+</mapper>
