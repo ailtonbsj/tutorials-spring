@@ -1,7 +1,6 @@
 package io.github.ailtonbsj.relationships.models;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -23,5 +22,5 @@ public class Role {
     String name;
 
     @ManyToMany(mappedBy = "roles", fetch = FetchType.LAZY)
-    Set<User> users = new HashSet<>();
+    List<User> users;
 }

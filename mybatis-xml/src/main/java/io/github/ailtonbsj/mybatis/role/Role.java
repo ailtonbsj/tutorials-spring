@@ -1,7 +1,8 @@
-package io.github.ailtonbsj.mybatis.models;
+package io.github.ailtonbsj.mybatis.role;
 
 import java.util.List;
 
+import io.github.ailtonbsj.mybatis.user.User;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;

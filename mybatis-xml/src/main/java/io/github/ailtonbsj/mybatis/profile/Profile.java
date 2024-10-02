@@ -1,26 +1,35 @@
-package io.github.ailtonbsj.mybatis.models;
+package io.github.ailtonbsj.mybatis.profile;
 
-import java.util.List;
+import java.time.LocalDate;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Table(name = "roles")
+@Table(name = "profiles")
 @Data
-public class Role {
+public class Profile {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
     String name;
-
-    @ManyToMany(mappedBy = "roles", fetch = FetchType.LAZY)
-    List<User> users;
+    
+    Long phone;
+    
+    LocalDate birthday;
+    
+    String biography;
+    
+    String country;
+    
+    Double salary;
+    
+    String instagram;
+    
+    String avatarUrl;
 }
