@@ -33,13 +33,13 @@ public class UserService {
     }
 
     public Optional<UserDTO> update(Long id, UserDTO dto) {
+        dto.setId(id);
         return repository.findById(id)
-                .map(entity -> {
-                    dto.setId(id);
-                    dto.setCreatedAt(entity.getCreatedAt());
-                    repository.save(mapper.toModel(dto));
-                    return mapper.toDto(entity);
-                });
+                .stream()
+                .peek(entity -> dto.setCreatedAt(entity.getCreatedAt()))
+                .map(entity -> repository.save(mapper.toModel(dto)))
+                .map(updated -> mapper.toDto(updated))
+                .findAny();
     }
 
     public boolean destroy(Long id) {

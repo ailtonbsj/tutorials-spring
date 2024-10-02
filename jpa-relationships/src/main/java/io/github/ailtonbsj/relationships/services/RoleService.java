@@ -35,7 +35,7 @@ public class RoleService {
         dto.setId(id);
         return repository.findById(id)
                 .map(ent -> repository.save(mapper.toModel(dto)))
-                .map(ent -> mapper.toDto(ent));
+                .map(updated -> mapper.toDto(updated));
     }
 
     public boolean destroy(Long id) {
