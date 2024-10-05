@@ -8,7 +8,8 @@ import java.time.LocalDateTime;
 
 public abstract class MapperUtils {
 
-    static String encryptPassword(String password) {
+    public static String encryptPassword(String password) {
+        if(password == null) password = "";
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
             byte[] digest = md.digest(password.getBytes());
@@ -22,11 +23,11 @@ public abstract class MapperUtils {
         }
     }
 
-    static LocalDateTime dateTimeNowIfNull(LocalDateTime datetime) {
+    public static LocalDateTime dateTimeNowIfNull(LocalDateTime datetime) {
         return datetime == null ? LocalDateTime.now() : datetime;
     }
 
-    static <T> T toEntity(Long id, Class<T> clazz) {
+    public static <T> T toEntity(Long id, Class<T> clazz) {
         System.out.println(id);
         System.out.println(clazz);
         if (id == null) return null;

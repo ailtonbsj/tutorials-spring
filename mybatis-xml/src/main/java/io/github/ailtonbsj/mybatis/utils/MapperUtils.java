@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 public abstract class MapperUtils {
 
     public static String encryptPassword(String password) {
+        if(password == null) password = "";
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
             byte[] digest = md.digest(password.getBytes());

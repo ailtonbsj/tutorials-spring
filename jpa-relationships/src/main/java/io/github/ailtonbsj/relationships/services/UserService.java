@@ -3,10 +3,16 @@ package io.github.ailtonbsj.relationships.services;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
+import org.springframework.data.domain.ExampleMatcher.StringMatcher;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import io.github.ailtonbsj.relationships.dtos.UserDTO;
 import io.github.ailtonbsj.relationships.mappers.UserMapper;
+import io.github.ailtonbsj.relationships.models.User;
 import io.github.ailtonbsj.relationships.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 
@@ -16,6 +22,18 @@ public class UserService {
 
     private final UserRepository repository;
     private final UserMapper mapper;
+
+    public Page<UserDTO> filter(UserDTO sample, Pageable pageable) {
+        User model = mapper.toModel(sample);
+        model.setPassword(null);
+        model.setCreatedAt(sample.getCreatedAt());
+        ExampleMatcher matcher = ExampleMatcher.matching()
+                .withIgnoreCase()
+                .withStringMatcher(StringMatcher.CONTAINING);
+        Example<User> example = Example.of(model, matcher);
+        Page<User> result = repository.findAll(example, pageable);
+        return result.map(mapper::toDto);
+    }
 
     public List<UserDTO> index() {
         return mapper.toDto(repository.findAll());
@@ -48,4 +66,5 @@ public class UserService {
         repository.deleteById(id);
         return true;
     }
+
 }
