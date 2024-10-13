@@ -34,8 +34,10 @@ public class ActiveSessionController {
 
     @PostMapping
     @ResponseStatus(value = HttpStatus.CREATED)
-    public ActiveSessionDTO create(@Valid @RequestBody ActiveSessionDTO dto) {
-        return service.create(dto);
+    public ResponseEntity<ActiveSessionDTO> create(@Valid @RequestBody ActiveSessionDTO dto) {
+        return service.create(dto)
+            .map(ent -> new ResponseEntity<ActiveSessionDTO>(ent, HttpStatus.CREATED))
+            .orElse(ResponseEntity.badRequest().build());
     }
 
     @GetMapping("{id}")

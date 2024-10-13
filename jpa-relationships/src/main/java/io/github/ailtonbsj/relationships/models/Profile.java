@@ -19,7 +19,7 @@ public class Profile {
 
     String name;
     
-    Long phone;
+    String phone;
     
     LocalDate birthday;
     

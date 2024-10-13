@@ -53,8 +53,10 @@ public class UserController {
 
     @PostMapping
     @ResponseStatus(value = HttpStatus.CREATED)
-    public UserDTO create(@Valid @RequestBody UserDTO dto) {
-        return service.create(dto);
+    public ResponseEntity<UserDTO> create(@Valid @RequestBody UserDTO dto) {
+        return service.create(dto)
+                .map(ent -> new ResponseEntity<UserDTO>(ent, HttpStatus.CREATED))
+                .orElse(ResponseEntity.badRequest().build());
     }
 
     @GetMapping("{id}")

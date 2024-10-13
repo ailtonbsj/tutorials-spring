@@ -38,6 +38,8 @@ public class ProfileService {
     }
 
     public ProfileDTO create(ProfileDTO dto) {
+        // var res = repository.findById(dto.getId());
+        // if(res.isPresent()) throw new DataIntegrityViolationException("Já existem registros com mesmos valores na base.");
         dto.setId(null);
         var saved = repository.save(mapper.toModel(dto));
         return mapper.toDto(saved);

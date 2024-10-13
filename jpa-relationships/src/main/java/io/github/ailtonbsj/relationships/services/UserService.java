@@ -39,11 +39,13 @@ public class UserService {
         return mapper.toDto(repository.findAll());
     }
 
-    public UserDTO create(UserDTO dto) {
+    public Optional<UserDTO> create(UserDTO dto) {
+        var res = repository.findById(dto.getId());
+        if(res.isPresent()) return Optional.empty();
         dto.setId(null);
         dto.setCreatedAt(null);
         var saved = repository.save(mapper.toModel(dto));
-        return mapper.toDto(saved);
+        return Optional.of(mapper.toDto(saved));
     }
 
     public Optional<UserDTO> show(Long id) {

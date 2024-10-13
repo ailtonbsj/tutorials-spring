@@ -1,6 +1,7 @@
 package io.github.ailtonbsj.relationships.controllers;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -52,9 +53,10 @@ public class ProfileController {
     }
 
     @PostMapping
-    @ResponseStatus(value = HttpStatus.CREATED)
-    public ProfileDTO create(@Valid @RequestBody ProfileDTO dto) {
-        return service.create(dto);
+    public ResponseEntity<ProfileDTO> create(@Valid @RequestBody ProfileDTO dto) {
+        return Optional.ofNullable(service.create(dto))
+                .map(created -> new ResponseEntity<ProfileDTO>(created, HttpStatus.CREATED))
+                .orElse(ResponseEntity.badRequest().build());
     }
 
     @GetMapping("{id}")

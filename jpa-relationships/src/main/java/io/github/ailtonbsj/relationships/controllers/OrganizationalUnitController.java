@@ -34,8 +34,10 @@ public class OrganizationalUnitController {
 
     @PostMapping
     @ResponseStatus(value = HttpStatus.CREATED)
-    public OrganizationalUnitDTO create(@Valid @RequestBody OrganizationalUnitDTO dto) {
-        return service.create(dto);
+    public ResponseEntity<OrganizationalUnitDTO> create(@Valid @RequestBody OrganizationalUnitDTO dto) {
+        return service.create(dto)
+                .map(ent -> new ResponseEntity<OrganizationalUnitDTO>(ent, HttpStatus.CREATED))
+                .orElse(ResponseEntity.badRequest().build());
     }
 
     @GetMapping("{id}")
@@ -55,7 +57,7 @@ public class OrganizationalUnitController {
 
     @DeleteMapping("{id}")
     public ResponseEntity<Void> destroy(@PathVariable Long id) {
-        if(!service.destroy(id))
+        if (!service.destroy(id))
             return ResponseEntity.notFound().build();
         return ResponseEntity.ok().build();
     }

@@ -21,10 +21,12 @@ public class ActiveSessionService {
         return mapper.toDto(repository.findAll());
     }
 
-    public ActiveSessionDTO create(ActiveSessionDTO dto) {
+    public Optional<ActiveSessionDTO> create(ActiveSessionDTO dto) {
+        var res = repository.findById(dto.getId());
+        if(res.isPresent()) return Optional.empty();
         dto.setId(null);
         var saved = repository.save(mapper.toModel(dto));
-        return mapper.toDto(saved);
+        return Optional.of(mapper.toDto(saved));
     }
 
     public Optional<ActiveSessionDTO> show(Long id) {

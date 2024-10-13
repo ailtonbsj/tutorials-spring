@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.springframework.util.StringUtils;
 
 import io.github.ailtonbsj.relationships.dtos.UserDTO;
 import io.github.ailtonbsj.relationships.models.ActiveSession;
@@ -23,6 +24,10 @@ public interface UserMapper {
     @Mapping(target="roles", source="rolesId")
     @Mapping(target="activeSessions", ignore=true)
     User toModel(UserDTO dto);
+
+    default String removeBlank(String prop) {
+        return StringUtils.hasLength(prop) ? prop : null;
+    }
 
     default OrganizationalUnit toOranizationalUnit(Long ouId) {
         if(ouId == null) return null;
