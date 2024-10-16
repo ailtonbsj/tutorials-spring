@@ -1,0 +1,24 @@
+services:
+
+  db0:
+    container_name: oracle0
+    image: oracleinanutshell/oracle-xe-11g:latest
+    environment:
+      ORACLE_DISABLE_ASYNCH_IO: true
+    ports:
+      - 1521:1521
+      - 5500:5500
+
+  db1:
+    container_name: postgres0
+    restart: always
+    image: postgres:latest
+    shm_size: 128mb
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: multiples
+    volumes:
+      - ./data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+
