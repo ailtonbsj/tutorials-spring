@@ -27,10 +27,15 @@ docker compose up -d
 # URL: jdbc:oracle:thin:@//localhost:1521
 # User: SYSTEM
 # Pass: oracle
-# Schema: MULTIDB/MULTIDB
+# Schema: MULTIDB
+# Schema pass: MULTIDB
 
 # Postgres URL:
 # jdbc:postgresql://localhost:5432/relationships
 # User: postgres
 # Pass: password
 ```
+
+### Test with Swagger
+
+[http://localhost:8080/swagger-ui/index.html](http://localhost:8080/swagger-ui/index.html)
