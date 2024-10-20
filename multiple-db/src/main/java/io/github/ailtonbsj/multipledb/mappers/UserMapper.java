@@ -7,13 +7,12 @@ import org.mapstruct.Mapping;
 
 import io.github.ailtonbsj.multipledb.dtos.UserDTO;
 import io.github.ailtonbsj.multipledb.models.User;
+import io.github.ailtonbsj.multipledb.models.UserPK;
 import io.github.ailtonbsj.multipledb.utils.Utils;
 
-@Mapper(componentModel = "spring", imports = { Utils.class, MapperUtils.class })
+@Mapper(componentModel = "spring")
 public interface UserMapper {
 
-    @Mapping(target = "id.username", source = "username")
-    @Mapping(target = "id.createdAt", source = "createdAt")
     @Mapping(target = "password", expression = "java(MapperUtils.encryptPassword(dto.getPassword()))")
     User toModel(UserDTO dto);
 
@@ -21,13 +20,16 @@ public interface UserMapper {
     // return StringUtils.hasLength(prop) ? prop : null;
     // }
 
-    @Mapping(target = "id", expression = "java(Utils.idToString(model.getId()))")
-    @Mapping(target = "username", source = "id.username")
+    @Mapping(target = "id", expression = "java(generateId(model))")
     @Mapping(target = "password", ignore = true)
-    @Mapping(target = "createdAt", source = "id.createdAt")
     @Mapping(target = "activeSessionsId", ignore = true)
     @Mapping(target = "rolesId", ignore = true)
     UserDTO toDto(User model);
+
+    default String generateId(User model) {
+        var pk = new UserPK(model.getUsername(), model.getCreatedAt());
+        return Utils.idToString(pk);
+    }
 
     // default List<Long> toActiveSessionsId(List<ActiveSession> activeSessions) {
     // if (activeSessions == null)

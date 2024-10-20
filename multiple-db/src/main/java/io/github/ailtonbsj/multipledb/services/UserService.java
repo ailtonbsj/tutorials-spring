@@ -48,7 +48,7 @@ public class UserService {
             throw new DataIntegrityViolationException("Já existem registros com mesmos valores na base.");
         // Mapping
         var entity = mapper.toModel(dto);
-        entity.getId().setCreatedAt(LocalDate.now());
+        entity.setCreatedAt(LocalDate.now());
         // Persisting
         var saved = repository.save(entity);
         return mapper.toDto(saved);
@@ -66,7 +66,7 @@ public class UserService {
         return repository.findById(id)
                 .stream()
                 // Mapping
-                .peek(entity -> dto.setCreatedAt(entity.getId().getCreatedAt()))
+                .peek(entity -> dto.setCreatedAt(entity.getCreatedAt()))
                 // Persisting
                 .map(entity -> repository.save(mapper.toModel(dto)))
                 .map(updated -> mapper.toDto(updated))

@@ -1,17 +1,24 @@
 package io.github.ailtonbsj.multipledb.models;
 
-import jakarta.persistence.EmbeddedId;
+import java.time.LocalDate;
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.IdClass;
 import jakarta.persistence.Table;
 import lombok.Data;
 
 @Entity
+@IdClass(UserPK.class)
 @Table(name = "USERS", schema="MULTIDB")
 @Data
 public class User {
     
-    @EmbeddedId
-    UserPK id;
+    @Id
+    String username;
+
+    @Id
+    LocalDate createdAt;
 
     String password;
 
