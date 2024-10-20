@@ -8,9 +8,10 @@ import org.mapstruct.Mapping;
 import io.github.ailtonbsj.multipledb.dtos.UserDTO;
 import io.github.ailtonbsj.multipledb.models.User;
 import io.github.ailtonbsj.multipledb.models.UserPK;
+import io.github.ailtonbsj.multipledb.utils.MapperUtils;
 import io.github.ailtonbsj.multipledb.utils.Utils;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", imports = {MapperUtils.class})
 public interface UserMapper {
 
     @Mapping(target = "password", expression = "java(MapperUtils.encryptPassword(dto.getPassword()))")

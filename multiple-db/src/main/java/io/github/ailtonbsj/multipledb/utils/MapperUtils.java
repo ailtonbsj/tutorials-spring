@@ -1,4 +1,4 @@
-package io.github.ailtonbsj.multipledb.mappers;
+package io.github.ailtonbsj.multipledb.utils;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
