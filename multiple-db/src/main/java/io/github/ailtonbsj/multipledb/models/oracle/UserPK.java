@@ -1,4 +1,4 @@
-package io.github.ailtonbsj.multipledb.models;
+package io.github.ailtonbsj.multipledb.models.oracle;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -10,10 +10,9 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ActiveSessionPK implements Serializable {
+public class UserPK  implements Serializable {
 
-    String userId;
-    LocalDate userCreatedAt;
-    String device;
+    String username;
+    LocalDate createdAt;
 
 }

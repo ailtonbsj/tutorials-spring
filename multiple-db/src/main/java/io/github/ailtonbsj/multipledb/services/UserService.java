@@ -14,9 +14,9 @@ import org.springframework.stereotype.Service;
 
 import io.github.ailtonbsj.multipledb.dtos.UserDTO;
 import io.github.ailtonbsj.multipledb.mappers.UserMapper;
-import io.github.ailtonbsj.multipledb.models.User;
-import io.github.ailtonbsj.multipledb.models.UserPK;
-import io.github.ailtonbsj.multipledb.repositories.UserRepository;
+import io.github.ailtonbsj.multipledb.models.oracle.User;
+import io.github.ailtonbsj.multipledb.models.oracle.UserPK;
+import io.github.ailtonbsj.multipledb.repositories.oracle.UserRepository;
 import lombok.RequiredArgsConstructor;
 
 @Service

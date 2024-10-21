@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.github.ailtonbsj.multipledb.dtos.ActiveSessionDTO;
-import io.github.ailtonbsj.multipledb.models.ActiveSessionPK;
+import io.github.ailtonbsj.multipledb.models.oracle.ActiveSessionPK;
 import io.github.ailtonbsj.multipledb.services.ActiveSessionService;
 import io.github.ailtonbsj.multipledb.utils.Utils;
 import jakarta.validation.Valid;

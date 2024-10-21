@@ -13,9 +13,9 @@ import org.springframework.stereotype.Service;
 
 import io.github.ailtonbsj.multipledb.dtos.ActiveSessionDTO;
 import io.github.ailtonbsj.multipledb.mappers.ActiveSessionMapper;
-import io.github.ailtonbsj.multipledb.models.ActiveSession;
-import io.github.ailtonbsj.multipledb.models.ActiveSessionPK;
-import io.github.ailtonbsj.multipledb.repositories.ActiveSessionRepository;
+import io.github.ailtonbsj.multipledb.models.oracle.ActiveSession;
+import io.github.ailtonbsj.multipledb.models.oracle.ActiveSessionPK;
+import io.github.ailtonbsj.multipledb.repositories.oracle.ActiveSessionRepository;
 import lombok.RequiredArgsConstructor;
 
 @Service

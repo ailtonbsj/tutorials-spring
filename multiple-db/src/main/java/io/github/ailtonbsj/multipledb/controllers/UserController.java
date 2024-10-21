@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.github.ailtonbsj.multipledb.dtos.UserDTO;
-import io.github.ailtonbsj.multipledb.models.UserPK;
+import io.github.ailtonbsj.multipledb.models.oracle.UserPK;
 import io.github.ailtonbsj.multipledb.services.UserService;
 import io.github.ailtonbsj.multipledb.utils.Utils;
 import jakarta.validation.Valid;

@@ -1,4 +1,4 @@
-package io.github.ailtonbsj.multipledb.models;
+package io.github.ailtonbsj.multipledb.models.oracle;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;

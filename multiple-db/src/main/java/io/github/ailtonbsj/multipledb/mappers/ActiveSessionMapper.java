@@ -7,8 +7,8 @@ import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
 import io.github.ailtonbsj.multipledb.dtos.ActiveSessionDTO;
-import io.github.ailtonbsj.multipledb.models.ActiveSession;
-import io.github.ailtonbsj.multipledb.models.ActiveSessionPK;
+import io.github.ailtonbsj.multipledb.models.oracle.ActiveSession;
+import io.github.ailtonbsj.multipledb.models.oracle.ActiveSessionPK;
 import io.github.ailtonbsj.multipledb.utils.Utils;
 
 @Mapper(componentModel = "spring")

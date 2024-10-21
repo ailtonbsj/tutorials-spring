@@ -8,9 +8,9 @@ import org.mapstruct.factory.Mappers;
 
 import io.github.ailtonbsj.multipledb.dtos.ActiveSessionDTO;
 import io.github.ailtonbsj.multipledb.dtos.UserDTO;
-import io.github.ailtonbsj.multipledb.models.ActiveSession;
-import io.github.ailtonbsj.multipledb.models.User;
-import io.github.ailtonbsj.multipledb.models.UserPK;
+import io.github.ailtonbsj.multipledb.models.oracle.ActiveSession;
+import io.github.ailtonbsj.multipledb.models.oracle.User;
+import io.github.ailtonbsj.multipledb.models.oracle.UserPK;
 import io.github.ailtonbsj.multipledb.utils.MapperUtils;
 import io.github.ailtonbsj.multipledb.utils.Utils;
 
