@@ -3,6 +3,7 @@ package io.github.ailtonbsj.multipledb.models;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.IdClass;
@@ -16,9 +17,11 @@ import lombok.Data;
 public class ActiveSession {
 
     @Id
+    @Column(name = "user_id")
     String userId;
 
     @Id
+    @Column(name = "user_created_at")
     LocalDate userCreatedAt;
     
     @Id
