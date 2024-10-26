@@ -1,0 +1,18 @@
+spring:
+
+  application:
+    name: oauth-client-sample
+
+  security:
+    # user:
+    #   name: admin
+    #   password: admin
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: YOUR_CLIENT_ID
+            client-secret: YOUR_SECRET
+      resourceserver:
+        jwt:
+          issuer-uri: https://accounts.google.com
