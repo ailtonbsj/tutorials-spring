@@ -17,10 +17,21 @@ OAuth flow: Authorization Code Flow (Standard flow)
 # Run Keycloak Server
 docker compose up -d
 
-# See Thunder Client collections
-
 # Fix Account is not fully set up:
 # Go to: Authentication > Required actions > Verify Profile > Off
+
+# See Thunder Client collections or access Swagger on:
+# http://localhost:8080/swagger-ui/index.html
+
+# Get Authentication Token with a user credentials like:
+{
+  "clientId": "apptest",
+  "username": "manager",
+  "password": "123456",
+  "grantType": "password"
+}
+
+# Use bearer token on others requests
 ```
 
 #### Keycloak Admin
