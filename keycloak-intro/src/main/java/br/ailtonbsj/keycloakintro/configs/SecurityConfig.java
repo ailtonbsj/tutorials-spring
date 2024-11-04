@@ -15,7 +15,7 @@ public class SecurityConfig {
 
     private final String[] publicRoutes = new String[] { 
         "/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs/**",
-        "/testing/auth" };
+        "/testing/public", "/testing/auth" };
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -23,9 +23,10 @@ public class SecurityConfig {
         http
             .csrf(AbstractHttpConfigurer::disable)
             .authorizeHttpRequests(authorize -> 
-                authorize.
-                requestMatchers(publicRoutes).permitAll()
-                .anyRequest().authenticated()
+                authorize
+                // requestMatchers(publicRoutes).permitAll()
+                // .anyRequest().authenticated()
+                .anyRequest().permitAll()
             );
             
         http.oauth2ResourceServer(
