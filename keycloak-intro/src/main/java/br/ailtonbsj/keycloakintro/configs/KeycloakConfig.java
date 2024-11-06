@@ -14,10 +14,10 @@ public class KeycloakConfig {
     public Keycloak keycloak() {
         return KeycloakBuilder.builder()
                 .serverUrl("http://localhost:8081/")
-                .realm("master")
+                .realm("realmtest")
                 .grantType(OAuth2Constants.PASSWORD)
-                .username("admin")
-                .password("admin")
+                .username("limiteduser")
+                .password("limiteduser")
                 .clientId("admin-cli")
                 .resteasyClient(new ResteasyClientBuilderImpl()
                         .connectionPoolSize(10)
