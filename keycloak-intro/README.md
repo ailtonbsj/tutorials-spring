@@ -32,6 +32,15 @@ docker compose up -d
 }
 
 # Use bearer token on others requests
+
+### Using Service Accounts ###
+
+# Go to realmtest > Clients > apptest > Settings
+# Enable (On) Client authentication
+# Enable (v) Service accounts roles
+# Go to realmtest > Clients > apptest > Credentials > Client Secret
+# Go to realmtest > Clients > apptest > Service accounts roles
+# Click [Assign role] and added some realm-management roles
 ```
 
 #### Keycloak Admin
