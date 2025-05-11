@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: oracledb-connection-pool
+  datasource:
+    url: jdbc:oracle:thin:@//localhost:1521
+    username: studyuser
+    password: 123
+    hikari:
+      minimum-idle: 2
+      maximum-pool-size: 10
+      idle-timeout: 60000
+      data-source-properties:
+        "[v$session.program]": ${spring.application.name}
+      # connection-init-sql: call DBMS_APPLICATION_INFO.SET_MODULE ('Study module', null)

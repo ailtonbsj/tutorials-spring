@@ -1,0 +1,17 @@
+services: 
+  oracle-db:
+    container_name: oracle-11g-db1
+    image: oracleinanutshell/oracle-xe-11g:latest
+    environment:
+      - ORACLE_DISABLE_ASYNCH_IO=true
+      - ORACLE_ALLOW_REMOTE=true
+      - ORACLE_ENABLE_XDB=true
+    ports:
+      - 1521:1521
+      - 5500:5500
+      - 49161:1521
+      - 8081:8080
+    # hostname: localhost
+    # username: system
+    # password: oracle
+    # sid: xe
