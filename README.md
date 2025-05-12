@@ -8,6 +8,7 @@ This is the source code of all tutorials I did using Spring. This courses are vi
 
 | Tutorial | Author  | Folder | Status |
 |----------|---------|--------|--------|
+|[JPA on OracleDB and HikariCP](https://github.com/brettwooldridge/HikariCP)|Ailton|[oracledb-connection-pool](oracledb-connection-pool)|![](https://img.shields.io/badge/status-completed-brightgreen)|
 |[Spring Boot OAuth2 Client](https://youtu.be/EQ5EwIYsgIE?si=6xe2kyX2AZscFsaY)|Giuliana Bezerra|[oauth-client](oauth-client)|![](https://img.shields.io/badge/status-completed-brightgreen)|
 |[Keycloak Authorization Server](https://youtu.be/wgdo5I53GQo?si=0ediBzzFJnfEbEKk)|Daniele Leão|[keycloak-intro](keycloak-intro)|![](https://img.shields.io/badge/status-completed-brightgreen)|
 |[Multiples DBs JPA & MyBatis](https://youtu.be/o2dGEBj2750?si=nkz9iExn7XVbaDNx)|Ailton|[multiple-db](multiple-db)|![](https://img.shields.io/badge/status-completed-brightgreen)|

@@ -15,3 +15,14 @@ docker compose up -d
 # Use SQL PLus or DBeaver to generate
 # schema and database user from schema.sql
 ```
+
+## Swagger UI
+
+[http://localhost:8080/swagger-ui/index.html](http://localhost:8080/swagger-ui/index.html)
+
+## Check amount and name of connections pool
+
+```sql
+-- See amount, program name and module name of CP
+SELECT USERNAME, PROGRAM, MODULE FROM V$SESSION WHERE USERNAME = 'STUDYUSER';
+```

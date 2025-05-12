@@ -6,9 +6,15 @@ spring:
     username: studyuser
     password: 123
     hikari:
-      minimum-idle: 2
+      minimum-idle: 1
       maximum-pool-size: 10
       idle-timeout: 60000
       data-source-properties:
         "[v$session.program]": ${spring.application.name}
       # connection-init-sql: call DBMS_APPLICATION_INFO.SET_MODULE ('Study module', null)
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.community.dialect.OracleLegacyDialect
+        format_sql: true
+    show-sql: true
