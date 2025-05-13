@@ -15,3 +15,14 @@ CREATE TABLE studyuser.users (
 
     CONSTRAINT pk_users PRIMARY KEY (username, created_at)
 );
+
+CREATE TABLE studyuser.active_sessions (
+    user_username   VARCHAR2(255) NOT NULL,
+    user_created_at DATE          NOT NULL,
+	device          VARCHAR2(255) NULL,
+	agent           VARCHAR2(255) NULL,
+	signed_in       DATE          NULL,
+
+	CONSTRAINT pk_sessions PRIMARY KEY (user_username, user_created_at, device),
+	CONSTRAINT fk_users_session FOREIGN KEY (user_username, user_created_at) REFERENCES studyuser.users(username, created_at)
+);
