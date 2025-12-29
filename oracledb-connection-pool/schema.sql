@@ -26,3 +26,23 @@ CREATE TABLE studyuser.active_sessions (
 	CONSTRAINT pk_sessions PRIMARY KEY (user_username, user_created_at, device),
 	CONSTRAINT fk_users_session FOREIGN KEY (user_username, user_created_at) REFERENCES studyuser.users(username, created_at)
 );
+
+CREATE TABLE studyuser.organizational_unit (
+    id          NUMBER(19)   PRIMARY KEY,
+    name        VARCHAR(255) NOT NULL,
+    parent_unit NUMBER(19)   NULL REFERENCES studyuser.organizational_unit(id)
+);
+
+CREATE TABLE studyuser.profiles (
+    id         NUMBER(19)     PRIMARY KEY,
+    avatar_url VARCHAR2(255)  NULL,
+    biography  VARCHAR2(1000) NULL,
+    birthday   DATE           NOT NULL,
+    country    VARCHAR2(255)  NULL,
+    instagram  VARCHAR2(255)  NULL,
+    name       VARCHAR2(255)  NULL,
+    phone      NUMBER(19)     NULL,
+    salary     NUMBER(16,3)   NULL
+);
+
+
